@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAM-Market-Pro | Zambia's #1 Shopping Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #ff6600;
+  --orange-dark: #e05500;
+  --orange-light: #fff3eb;
+  --red: #e8002d;
+  --green: #00a651;
+  --dark: #111827;
+  --mid: #374151;
+  --soft: #6b7280;
+  --light: #f9fafb;
+  --white: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: var(--light); color: var(--dark); overflow-x: hidden; }
+
+/* ANNOUNCE BAR */
+.announce-bar { background: var(--dark); color: #fff; text-align: center; padding: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; }
+.announce-bar span { color: var(--orange); }
+
+/* HEADER */
+.header { background: linear-gradient(135deg, #ff6600 0%, #ff8c00 60%, #ffb347 100%); padding: 14px 16px; position: sticky; top: 0; z-index: 200; box-shadow: 0 4px 20px rgba(255,102,0,0.35); }
+.header-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.logo { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
+.logo-main { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 20px; color: white; letter-spacing: -0.5px; line-height: 1; text-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+.logo-main span { color: var(--dark); }
+.logo-sub { font-size: 9px; color: rgba(255,255,255,0.85); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.search-wrap { flex: 1; display: flex; background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.15); }
+.search-wrap input { flex: 1; border: none; padding: 11px 16px; font-size: 13px; font-family: 'Nunito', sans-serif; outline: none; color: var(--dark); }
+.search-wrap button { background: var(--dark); border: none; color: white; padding: 0 20px; font-weight: 800; font-size: 13px; cursor: pointer; letter-spacing: 0.5px; transition: background 0.2s; }
+.search-wrap button:hover { background: #222; }
+.header-icons { display: flex; gap: 6px; flex-shrink: 0; }
+.icon-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; position: relative; backdrop-filter: blur(6px); transition: background 0.2s; }
+.icon-btn:hover { background: rgba(255,255,255,0.35); }
+.badge { position: absolute; top: 2px; right: 2px; background: var(--red); color: white; font-size: 9px; font-weight: 800; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1.5px solid white; }
+
+/* NAV TABS */
+.nav-tabs { display: flex; overflow-x: auto; scrollbar-width: none; background: white; border-bottom: 2px solid var(--border); }
+.nav-tabs::-webkit-scrollbar { display: none; }
+.nav-tab { flex-shrink: 0; padding: 11px 18px; font-size: 12.5px; font-weight: 700; color: var(--soft); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: all 0.2s; }
+.nav-tab.active, .nav-tab:hover { color: var(--orange); border-bottom-color: var(--orange); }
+
+/* PAGES */
+.page { display: none; }
+.page.active { display: block; }
+
+/* HERO BANNER */
+.hero-banner { margin: 12px; border-radius: var(--radius); background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 28px 22px; position: relative; overflow: hidden; min-height: 160px; display: flex; align-items: center; }
+.hero-banner::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(255,102,0,0.4) 0%, transparent 70%); border-radius: 50%; }
+.hero-content { position: relative; z-index: 2; flex: 1; }
+.hero-tag { background: var(--orange); color: white; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.hero-title { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 900; color: white; line-height: 1.1; margin-bottom: 6px; }
+.hero-title span { color: var(--orange); }
+.hero-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
+.hero-btn { background: var(--orange); color: white; border: none; padding: 10px 22px; border-radius: 25px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 4px 16px rgba(255,102,0,0.45); transition: all 0.2s; }
+.hero-btn:hover { background: var(--orange-dark); transform: translateY(-1px); }
+.hero-emoji { position: absolute; right: 16px; bottom: 10px; font-size: 80px; opacity: 0.7; z-index: 1; }
+
+/* STATS BAR */
+.stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin: 0 12px 12px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.stat-item { background: white; padding: 14px 10px; text-align: center; }
+.stat-num { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 800; color: var(--orange); }
+.stat-label { font-size: 10px; color: var(--soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+
+/* SECTION HEADERS */
+.section-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; }
+.section-title { font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 800; color: var(--dark); }
+.see-all { font-size: 12px; color: var(--orange); font-weight: 700; cursor: pointer; }
+
+/* CATEGORIES */
+.categories { display: flex; overflow-x: auto; padding: 4px 12px 16px; gap: 10px; scrollbar-width: none; }
+.categories::-webkit-scrollbar { display: none; }
+.cat-item { flex-shrink: 0; text-align: center; cursor: pointer; transition: transform 0.2s; }
+.cat-item:hover { transform: translateY(-2px); }
+.cat-icon { width: 64px; height: 64px; background: var(--orange-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 7px; border: 2px solid rgba(255,102,0,0.15); transition: all 0.2s; box-shadow: 0 3px 10px rgba(255,102,0,0.1); }
+.cat-item:hover .cat-icon { background: var(--orange); border-color: var(--orange); }
+.cat-item span { font-size: 11px; color: var(--mid); font-weight: 700; display: block; max-width: 68px; }
+
+/* FLASH SALE */
+.flash-bar { margin: 0 12px 12px; background: linear-gradient(135deg, #e8002d, #ff1744); border-radius: var(--radius); padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 16px rgba(232,0,45,0.3); }
+.flash-left { display: flex; align-items: center; gap: 10px; }
+.flash-icon { font-size: 24px; }
+.flash-title { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 900; color: white; }
+.flash-sub { font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 600; }
+.countdown { display: flex; gap: 5px; align-items: center; }
+.count-box { background: white; color: var(--red); padding: 5px 8px; border-radius: 6px; font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 16px; min-width: 34px; text-align: center; }
+.count-sep { color: white; font-weight: 800; font-size: 16px; }
+
+/* PRODUCT GRID */
+.product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 12px 12px; }
+.product-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: all 0.25s; position: relative; }
+.product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.product-img { width: 100%; height: 150px; background: linear-gradient(135deg, #f0f0f0, #e0e0e0); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative; }
+.prod-badge { position: absolute; top: 8px; left: 8px; background: var(--red); color: white; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; }
+.prod-badge.new { background: var(--green); }
+.prod-badge.hot { background: var(--orange); }
+.wishlist-btn { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.9); border: none; width: 28px; height: 28px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: all 0.2s; }
+.product-info { padding: 10px 12px 12px; }
+.product-name { font-size: 13px; color: var(--mid); line-height: 1.35; height: 36px; overflow: hidden; font-weight: 600; margin-bottom: 6px; }
+.price-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+.price { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 800; color: var(--red); }
+.old-price { font-size: 12px; color: var(--soft); text-decoration: line-through; }
+.discount-tag { background: #fff3eb; color: var(--orange); font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+.rating-row { display: flex; align-items: center; gap: 4px; margin-bottom: 8px; }
+.stars { color: #f59e0b; font-size: 11px; }
+.rating-num { font-size: 11px; color: var(--soft); font-weight: 600; }
+.buy-btn { width: 100%; background: linear-gradient(135deg, var(--orange), var(--orange-dark)); color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s; }
+.buy-btn:hover { transform: translateY(-1px); }
+
+/* PROMO GRID */
+.promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 12px 12px; }
+.promo-card { border-radius: var(--radius); padding: 16px; min-height: 90px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform 0.2s; position: relative; overflow: hidden; }
+.promo-card:hover { transform: scale(1.02); }
+.promo-card.green { background: linear-gradient(135deg, #00a651, #00c853); }
+.promo-card.blue { background: linear-gradient(135deg, #1565c0, #1976d2); }
+.promo-card.purple { background: linear-gradient(135deg, #6a1b9a, #8e24aa); }
+.promo-card.teal { background: linear-gradient(135deg, #00695c, #00897b); }
+.promo-title { font-weight: 900; color: white; font-size: 14px; line-height: 1.2; }
+.promo-sub { font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 600; }
+.promo-emoji { font-size: 32px; position: absolute; right: 10px; bottom: 8px; opacity: 0.7; }
+
+/* ============ SELLER PAGE ============ */
+.sell-hero { background: linear-gradient(135deg, #1a1a2e, #0f3460); margin: 12px; border-radius: var(--radius); padding: 24px 18px; color: white; }
+.sell-hero h2 { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+.sell-hero h2 span { color: var(--orange); }
+.sell-hero p { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+.sell-hero-btns { display: flex; gap: 10px; }
+.btn-primary { background: var(--orange); color: white; border: none; padding: 11px 20px; border-radius: 25px; font-weight: 800; font-size: 13px; cursor: pointer; }
+.btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); padding: 11px 20px; border-radius: 25px; font-weight: 800; font-size: 13px; cursor: pointer; }
+
+.commission-card { background: white; margin: 0 12px 12px; border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.commission-title { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 15px; color: var(--dark); margin-bottom: 12px; }
+.commission-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.commission-row:last-child { border-bottom: none; }
+.comm-label { font-size: 13px; color: var(--mid); font-weight: 600; }
+.comm-val { font-size: 13px; font-weight: 800; color: var(--orange); }
+
+/* POST LISTING FORM */
+.post-form { background: white; margin: 0 12px 12px; border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.form-title { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 15px; color: var(--dark); margin-bottom: 14px; }
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--mid); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 11px 14px; font-size: 13px; font-family: 'Nunito', sans-serif; color: var(--dark); outline: none; transition: border-color 0.2s; background: var(--light); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); background: white; }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.price-calc { background: var(--orange-light); border-radius: var(--radius-sm); padding: 12px; margin-top: 8px; }
+.price-calc-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
+.price-calc-row span:first-child { color: var(--soft); font-weight: 600; }
+.price-calc-row span:last-child { color: var(--dark); font-weight: 800; }
+.price-calc-row.total span:last-child { color: var(--green); font-size: 14px; }
+.img-upload { border: 2px dashed var(--border); border-radius: var(--radius-sm); padding: 24px; text-align: center; cursor: pointer; transition: border-color 0.2s; }
+.img-upload:hover { border-color: var(--orange); }
+.img-upload span { font-size: 32px; display: block; margin-bottom: 8px; }
+.img-upload p { font-size: 12px; color: var(--soft); font-weight: 600; }
+.submit-listing-btn { width: 100%; background: linear-gradient(135deg, var(--orange), var(--orange-dark)); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 900; font-size: 15px; cursor: pointer; font-family: 'Poppins', sans-serif; }
+
+/* ============ PAYMENT PAGE ============ */
+.payment-section { padding: 0 12px 12px; }
+.payment-title { font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 800; color: var(--dark); padding: 14px 0 10px; }
+.payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.payment-card { background: white; border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); cursor: pointer; transition: all 0.2s; border: 2px solid transparent; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.payment-card:hover, .payment-card.selected { border-color: var(--orange); transform: scale(1.02); }
+.payment-card.selected { background: var(--orange-light); }
+.payment-icon { font-size: 28px; }
+.payment-name { font-size: 12px; font-weight: 800; color: var(--dark); text-align: center; }
+.payment-sub { font-size: 10px; color: var(--soft); font-weight: 600; text-align: center; }
+.payment-badge { font-size: 9px; background: var(--green); color: white; padding: 2px 6px; border-radius: 10px; font-weight: 700; }
+
+/* ============ GROUPS PAGE ============ */
+.group-hero { background: linear-gradient(135deg, #6a1b9a, #8e24aa); margin: 12px; border-radius: var(--radius); padding: 20px 18px; color: white; }
+.group-hero h2 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+.group-hero p { font-size: 12px; color: rgba(255,255,255,0.8); margin-bottom: 14px; }
+.group-list { padding: 0 12px 12px; }
+.group-card { background: white; border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); margin-bottom: 10px; display: flex; gap: 12px; align-items: center; cursor: pointer; transition: all 0.2s; }
+.group-card:hover { transform: translateX(3px); box-shadow: var(--shadow-lg); }
+.group-avatar { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.group-info { flex: 1; }
+.group-name { font-weight: 800; font-size: 14px; color: var(--dark); margin-bottom: 3px; }
+.group-meta { font-size: 11px; color: var(--soft); font-weight: 600; }
+.group-join { background: var(--orange); color: white; border: none; padding: 7px 14px; border-radius: 20px; font-weight: 800; font-size: 11px; cursor: pointer; flex-shrink: 0; }
+.group-joined { background: var(--light); color: var(--soft); border: 1.5px solid var(--border); padding: 7px 14px; border-radius: 20px; font-weight: 800; font-size: 11px; cursor: pointer; flex-shrink: 0; }
+
+/* CHAT AREA */
+.chat-area { background: white; margin: 0 12px 12px; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.chat-header { background: linear-gradient(135deg, var(--orange), var(--orange-dark)); padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+.chat-header span { font-weight: 800; font-size: 14px; color: white; }
+.chat-header small { font-size: 11px; color: rgba(255,255,255,0.8); }
+.chat-messages { height: 260px; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.chat-msg { max-width: 80%; }
+.chat-msg.me { align-self: flex-end; }
+.chat-msg.other { align-self: flex-start; }
+.msg-bubble { padding: 9px 13px; border-radius: 16px; font-size: 13px; line-height: 1.4; }
+.chat-msg.me .msg-bubble { background: var(--orange); color: white; border-radius: 16px 16px 4px 16px; }
+.chat-msg.other .msg-bubble { background: var(--light); color: var(--dark); border-radius: 16px 16px 16px 4px; }
+.msg-meta { font-size: 10px; color: var(--soft); font-weight: 600; margin-top: 3px; padding: 0 4px; }
+.chat-msg.me .msg-meta { text-align: right; }
+.chat-input-row { display: flex; border-top: 1px solid var(--border); padding: 10px; gap: 8px; }
+.chat-input-row input { flex: 1; border: 1.5px solid var(--border); border-radius: 25px; padding: 9px 14px; font-size: 13px; font-family: 'Nunito', sans-serif; outline: none; }
+.chat-input-row input:focus { border-color: var(--orange); }
+.chat-send { background: var(--orange); border: none; color: white; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* ============ PROFILE PAGE ============ */
+.profile-cover { background: linear-gradient(135deg, #ff6600, #ff8c00); height: 120px; margin: 12px 12px 0; border-radius: var(--radius) var(--radius) 0 0; position: relative; }
+.profile-cover .verified-badge { position: absolute; top: 12px; right: 12px; background: var(--green); color: white; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 4px; }
+.profile-cover .unverified-badge { position: absolute; top: 12px; right: 12px; background: #f59e0b; color: white; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; }
+.profile-info-card { background: white; margin: 0 12px 12px; border-radius: 0 0 var(--radius) var(--radius); padding: 0 16px 16px; box-shadow: var(--shadow); }
+.profile-avatar-wrap { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 10px; }
+.profile-avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--orange-light); border: 4px solid white; display: flex; align-items: center; justify-content: center; font-size: 30px; margin-top: -36px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.profile-actions { display: flex; gap: 8px; }
+.follow-btn { background: var(--orange); color: white; border: none; padding: 8px 16px; border-radius: 20px; font-weight: 800; font-size: 12px; cursor: pointer; }
+.message-btn { background: var(--light); color: var(--dark); border: 1.5px solid var(--border); padding: 8px 16px; border-radius: 20px; font-weight: 800; font-size: 12px; cursor: pointer; }
+.profile-name { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 3px; }
+.profile-handle { font-size: 12px; color: var(--soft); font-weight: 600; margin-bottom: 10px; }
+.profile-bio { font-size: 13px; color: var(--mid); line-height: 1.5; margin-bottom: 12px; }
+.profile-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.prof-stat { text-align: center; }
+.prof-stat-num { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 800; color: var(--dark); }
+.prof-stat-label { font-size: 10px; color: var(--soft); font-weight: 600; }
+
+/* PROFILE SETTINGS */
+.settings-section { padding: 0 12px 80px; }
+.settings-card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 12px; }
+.settings-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.2s; }
+.settings-item:last-child { border-bottom: none; }
+.settings-item:hover { background: var(--light); }
+.settings-item-left { display: flex; align-items: center; gap: 12px; }
+.settings-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.settings-label { font-weight: 700; font-size: 14px; color: var(--dark); }
+.settings-sub { font-size: 11px; color: var(--soft); font-weight: 600; margin-top: 1px; }
+.settings-arrow { color: var(--soft); font-size: 14px; }
+.toggle { width: 44px; height: 24px; background: var(--border); border-radius: 12px; position: relative; cursor: pointer; transition: background 0.3s; }
+.toggle.on { background: var(--orange); }
+.toggle-dot { width: 20px; height: 20px; background: white; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: transform 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.toggle.on .toggle-dot { transform: translateX(20px); }
+
+/* VERIFICATION */
+.verify-card { background: linear-gradient(135deg, #fff3eb, #ffe0cc); margin: 0 12px 12px; border-radius: var(--radius); padding: 16px; border: 2px solid rgba(255,102,0,0.2); }
+.verify-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.verify-icon { font-size: 28px; }
+.verify-title { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 15px; color: var(--dark); }
+.verify-sub { font-size: 12px; color: var(--soft); font-weight: 600; }
+.verify-steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.verify-step { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: white; border-radius: var(--radius-sm); }
+.step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--orange); color: white; font-weight: 900; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.step-text { font-size: 12px; color: var(--mid); font-weight: 600; }
+.verify-btn { width: 100%; background: var(--orange); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer; }
+
+/* PENDING SELLERS */
+.admin-section { padding: 0 12px 80px; }
+.pending-card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 14px; margin-bottom: 10px; }
+.pending-user { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.pending-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--orange-light); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.pending-name { font-weight: 800; font-size: 14px; color: var(--dark); }
+.pending-info { font-size: 11px; color: var(--soft); font-weight: 600; }
+.pending-actions { display: flex; gap: 8px; }
+.approve-btn { flex: 1; background: var(--green); color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; }
+.reject-btn { flex: 1; background: var(--red); color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; }
+
+/* BOTTOM NAV */
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--border); display: grid; grid-template-columns: repeat(5, 1fr); z-index: 300; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); }
+.nav-item { display: flex; flex-direction: column; align-items: center; padding: 10px 4px 8px; cursor: pointer; transition: all 0.2s; position: relative; }
+.nav-item .nav-icon { font-size: 22px; margin-bottom: 3px; filter: grayscale(1) opacity(0.5); transition: all 0.2s; }
+.nav-item .nav-label { font-size: 10px; color: var(--soft); font-weight: 700; transition: all 0.2s; }
+.nav-item.active .nav-icon { filter: none; }
+.nav-item.active .nav-label { color: var(--orange); }
+.nav-item.sell-nav { }
+.nav-item.sell-nav .sell-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--orange), var(--orange-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-top: -20px; box-shadow: 0 4px 16px rgba(255,102,0,0.5); border: 3px solid white; }
+.nav-item.sell-nav .nav-label { color: var(--orange); font-weight: 800; }
+
+/* MODAL */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; display: none; align-items: flex-end; backdrop-filter: blur(3px); }
+.modal-overlay.active { display: flex; }
+.modal { background: white; width: 100%; max-height: 92vh; border-radius: 24px 24px 0 0; overflow-y: auto; padding: 0 0 30px; animation: slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-handle { width: 40px; height: 4px; background: var(--border); border-radius: 2px; margin: 14px auto 0; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.modal-title { font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 800; color: var(--dark); }
+.modal-close { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--soft); }
+.modal-body { padding: 16px 20px; }
+
+/* SELLER PROFILES */
+.seller-list { padding: 0 12px 80px; }
+.seller-card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 14px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
+.seller-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.seller-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.seller-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--orange-light); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; border: 2px solid rgba(255,102,0,0.2); }
+.seller-name { font-weight: 800; font-size: 14px; color: var(--dark); }
+.seller-handle { font-size: 11px; color: var(--soft); font-weight: 600; }
+.seller-verified { font-size: 10px; background: var(--green); color: white; padding: 2px 7px; border-radius: 10px; font-weight: 700; display: inline-block; margin-top: 3px; }
+.seller-stats-row { display: flex; gap: 16px; margin-bottom: 10px; }
+.sel-stat { text-align: center; }
+.sel-stat-num { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 800; color: var(--dark); }
+.sel-stat-label { font-size: 10px; color: var(--soft); font-weight: 600; }
+.follow-seller-btn { width: 100%; background: linear-gradient(135deg, var(--orange), var(--orange-dark)); color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; }
+
+/* TOAST */
+.toast { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-20px); background: var(--dark); color: white; padding: 10px 20px; border-radius: 25px; font-size: 13px; font-weight: 700; z-index: 9999; opacity: 0; transition: all 0.3s; pointer-events: none; white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.success { background: var(--green); }
+.toast.error { background: var(--red); }
+
+/* SCROLLABLE PAGE CONTENT */
+.page-scroll { padding-bottom: 80px; }
+
+/* NOTIFICATION DOT */
+.notif-dot { position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; background: var(--red); border-radius: 50%; border: 2px solid white; }
+
+/* SOLD PROGRESS */
+.sold-bar { background: var(--light); border-radius: 4px; height: 4px; margin-bottom: 8px; overflow: hidden; }
+.sold-fill { height: 100%; background: linear-gradient(90deg, var(--orange), var(--red)); border-radius: 4px; }
+
+/* Commission Info Banner */
+.comm-info-banner { background: linear-gradient(135deg, #1a1a2e, #0f3460); margin: 0 12px 12px; border-radius: var(--radius); padding: 16px; display: flex; align-items: center; gap: 12px; }
+.comm-info-text { color: white; }
+.comm-info-text h4 { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 800; margin-bottom: 3px; }
+.comm-info-text p { font-size: 11px; color: rgba(255,255,255,0.7); }
+.comm-info-icon { font-size: 32px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<div class="announce-bar">🚀 FREE delivery on orders over <span>K200</span> | New sellers get <span>0% commission</span> for first month!</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-main">ZAM<span>Market</span></div>
+      <div class="logo-sub">Zambia's #1 Platform</div>
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search products, sellers..." />
+      <button onclick="doSearch()">🔍</button>
+    </div>
+    <div class="header-icons">
+      <button class="icon-btn" onclick="showModal('cartModal')">
+        🛒<span class="badge">3</span>
+      </button>
+      <button class="icon-btn" onclick="showPage('profile')">
+        👤
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showPage('home',this)">🏠 Home</div>
+  <div class="nav-tab" onclick="showPage('sell',this)">💰 Sell</div>
+  <div class="nav-tab" onclick="showPage('groups',this)">💬 Groups</div>
+  <div class="nav-tab" onclick="showPage('sellers',this)">🏪 Sellers</div>
+  <div class="nav-tab" onclick="showPage('payment',this)">💳 Payments</div>
+  <div class="nav-tab" onclick="showPage('profile',this)">👤 Profile</div>
+</div>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div id="home" class="page active page-scroll">
+  <div class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-tag">🇿🇲 Made in Zambia</div>
+      <div class="hero-title">Shop <span>Smart</span>,<br>Save Big!</div>
+      <div class="hero-sub">Thousands of Zambian sellers, one platform</div>
+      <button class="hero-btn" onclick="showPage('sell')">Start Selling →</button>
+    </div>
+    <div class="hero-emoji">🛍️</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">50K+</div><div class="stat-label">Products</div></div>
+    <div class="stat-item"><div class="stat-num">12K+</div><div class="stat-label">Sellers</div></div>
+    <div class="stat-item"><div class="stat-num">98K+</div><div class="stat-label">Buyers</div></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-title">🗂️ Shop by Category</div>
+    <div class="see-all" onclick="showToast('All categories coming soon!','')">See All →</div>
+  </div>
+  <div class="categories">
+    <div class="cat-item"><div class="cat-icon">👗</div><span>Fashion</span></div>
+    <div class="cat-item"><div class="cat-icon">📱</div><span>Electronics</span></div>
+    <div class="cat-item"><div class="cat-icon">🍎</div><span>Food</span></div>
+    <div class="cat-item"><div class="cat-icon">🏠</div><span>Home</span></div>
+    <div class="cat-item"><div class="cat-icon">💄</div><span>Beauty</span></div>
+    <div class="cat-item"><div class="cat-icon">🚗</div><span>Auto</span></div>
+    <div class="cat-item"><div class="cat-icon">📚</div><span>Books</span></div>
+    <div class="cat-item"><div class="cat-icon">🌿</div><span>Farm</span></div>
+    <div class="cat-item"><div class="cat-icon">⚽</div><span>Sports</span></div>
+    <div class="cat-item"><div class="cat-icon">👶</div><span>Baby</span></div>
+  </div>
+
+  <div class="flash-bar">
+    <div class="flash-left">
+      <div class="flash-icon">⚡</div>
+      <div><div class="flash-title">Flash Sale!</div><div class="flash-sub">Ends in:</div></div>
+    </div>
+    <div class="countdown">
+      <div class="count-box" id="hrs">04</div>
+      <div class="count-sep">:</div>
+      <div class="count-box" id="mins">32</div>
+      <div class="count-sep">:</div>
+      <div class="count-box" id="secs">17</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-title">🔥 Featured Products</div>
+    <div class="see-all">See All →</div>
+  </div>
+  <div class="product-grid">
+    <div class="product-card" onclick="showModal('productModal')">
+      <div class="product-img">👟<div class="prod-badge">-40%</div><button class="wishlist-btn" onclick="event.stopPropagation();addWishlist(this)">🤍</button></div>
+      <div class="product-info">
+        <div class="product-name">Nike Air Force Shoes Men's Size</div>
+        <div class="price-row"><span class="price">K480</span><span class="old-price">K800</span><span class="discount-tag">-40%</span></div>
+        <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">(4.9) 234</span></div>
+        <div class="sold-bar"><div class="sold-fill" style="width:78%"></div></div>
+        <button class="buy-btn" onclick="event.stopPropagation();showToast('Added to cart! 🛒','success')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" onclick="showModal('productModal')">
+      <div class="product-img">💻<div class="prod-badge new">NEW</div><button class="wishlist-btn" onclick="event.stopPropagation();addWishlist(this)">🤍</button></div>
+      <div class="product-info">
+        <div class="product-name">Laptop HP 15" Intel Core i5 8GB</div>
+        <div class="price-row"><span class="price">K8,500</span><span class="old-price">K9,200</span></div>
+        <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating-num">(4.3) 89</span></div>
+        <div class="sold-bar"><div class="sold-fill" style="width:45%"></div></div>
+        <button class="buy-btn" onclick="event.stopPropagation();showToast('Added to cart! 🛒','success')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" onclick="showModal('productModal')">
+      <div class="product-img">🍳<div class="prod-badge hot">HOT</div><button class="wishlist-btn" onclick="event.stopPropagation();addWishlist(this)">🤍</button></div>
+      <div class="product-info">
+        <div class="product-name">Non-Stick Cooking Pan Set 5 Pieces</div>
+        <div class="price-row"><span class="price">K320</span><span class="old-price">K450</span><span class="discount-tag">-29%</span></div>
+        <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">(4.8) 512</span></div>
+        <div class="sold-bar"><div class="sold-fill" style="width:92%"></div></div>
+        <button class="buy-btn" onclick="event.stopPropagation();showToast('Added to cart! 🛒','success')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" onclick="showModal('productModal')">
+      <div class="product-img">👜<div class="prod-badge">-25%</div><button class="wishlist-btn" onclick="event.stopPropagation();addWishlist(this)">🤍</button></div>
+      <div class="product-info">
+        <div class="product-name">Women's Leather Handbag Premium</div>
+        <div class="price-row"><span class="price">K750</span><span class="old-price">K1,000</span></div>
+        <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating-num">(4.5) 178</span></div>
+        <div class="sold-bar"><div class="sold-fill" style="width:60%"></div></div>
+        <button class="buy-btn" onclick="event.stopPropagation();showToast('Added to cart! 🛒','success')">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><div class="section-title">🎯 Promotions</div></div>
+  <div class="promo-grid">
+    <div class="promo-card green" onclick="showToast('Opening Fresh Produce...')"><div class="promo-title">Fresh Farm Produce</div><div class="promo-sub">Direct from farmers</div><div class="promo-emoji">🥬</div></div>
+    <div class="promo-card blue" onclick="showToast('Opening Electronics...')"><div class="promo-title">Tech Deals</div><div class="promo-sub">Up to 50% off</div><div class="promo-emoji">📱</div></div>
+    <div class="promo-card purple" onclick="showPage('sellers')"><div class="promo-title">Top Sellers</div><div class="promo-sub">Trusted vendors</div><div class="promo-emoji">🏆</div></div>
+    <div class="promo-card teal" onclick="showPage('groups')"><div class="promo-title">Join Groups</div><div class="promo-sub">Buy & sell together</div><div class="promo-emoji">💬</div></div>
+  </div>
+</div>
+
+<!-- ==================== SELL PAGE ==================== -->
+<div id="sell" class="page page-scroll">
+  <div class="sell-hero">
+    <h2>Start <span>Selling</span> Today 🚀</h2>
+    <p>List your products and reach thousands of buyers across Zambia. We take a small commission so you always earn more!</p>
+    <div class="sell-hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('postForm').scrollIntoView({behavior:'smooth'})">+ Post Listing</button>
+      <button class="btn-outline" onclick="showPage('sellers')">My Shop</button>
+    </div>
+  </div>
+
+  <div class="commission-card">
+    <div class="commission-title">💰 Our Simple Commission</div>
+    <div class="commission-row"><span class="comm-label">Sale Price K1 – K99</span><span class="comm-val">10% commission</span></div>
+    <div class="commission-row"><span class="comm-label">Sale Price K100 – K499</span><span class="comm-val">8% commission</span></div>
+    <div class="commission-row"><span class="comm-label">Sale Price K500 – K999</span><span class="comm-val">7% commission</span></div>
+    <div class="commission-row"><span class="comm-label">Sale Price K1,000+</span><span class="comm-val">5% commission</span></div>
+    <div class="commission-row"><span class="comm-label">First Month (New Sellers)</span><span class="comm-val" style="color:var(--green)">FREE! 0%</span></div>
+  </div>
+
+  <div class="comm-info-banner">
+    <div class="comm-info-icon">💡</div>
+    <div class="comm-info-text">
+      <h4>Example: Sell at K50</h4>
+      <p>You keep K45 • We earn K5 • Buyer pays K50. It's that simple!</p>
+    </div>
+  </div>
+
+  <!-- POST LISTING FORM -->
+  <div class="post-form" id="postForm">
+    <div class="form-title">📦 Post a New Listing</div>
+    <div class="form-group">
+      <label>Product Name</label>
+      <input type="text" id="prodName" placeholder="e.g. Samsung Galaxy A54 128GB" />
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <select id="prodCat">
+        <option value="">Select Category</option>
+        <option>Electronics</option>
+        <option>Fashion & Clothing</option>
+        <option>Home & Kitchen</option>
+        <option>Food & Groceries</option>
+        <option>Beauty & Health</option>
+        <option>Auto Parts & Vehicles</option>
+        <option>Agriculture & Farming</option>
+        <option>Books & Education</option>
+        <option>Baby & Kids</option>
+        <option>Sports & Fitness</option>
+        <option>Furniture</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea id="prodDesc" placeholder="Describe your product - condition, features, what's included..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Your Price (ZMW)</label>
+      <input type="number" id="prodPrice" placeholder="e.g. 500" oninput="calcCommission()" />
+      <div class="price-calc" id="priceCalc" style="display:none">
+        <div class="price-calc-row"><span>Your listing price</span><span id="calcPrice">K0</span></div>
+        <div class="price-calc-row"><span>Platform commission</span><span id="calcComm" style="color:var(--red)">-K0</span></div>
+        <div class="price-calc-row total"><span>You receive</span><span id="calcEarn">K0</span></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Location</label>
+      <select id="prodLocation">
+        <option value="">Select Province/City</option>
+        <option>Lusaka</option>
+        <option>Copperbelt - Kitwe</option>
+        <option>Copperbelt - Ndola</option>
+        <option>Northern - Kasama</option>
+        <option>Eastern - Chipata</option>
+        <option>Southern - Livingstone</option>
+        <option>Western - Mongu</option>
+        <option>North-Western - Solwezi</option>
+        <option>Central - Kabwe</option>
+        <option>Luapula - Mansa</option>
+        <option>Muchinga - Chinsali</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Product Images</label>
+      <div class="img-upload" onclick="showToast('Image upload ready!','')">
+        <span>📷</span>
+        <p>Tap to add photos (up to 5)</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Condition</label>
+      <select id="prodCondition">
+        <option>Brand New</option>
+        <option>Used - Like New</option>
+        <option>Used - Good</option>
+        <option>Used - Fair</option>
+      </select>
+    </div>
+    <button class="submit-listing-btn" onclick="submitListing()">🚀 Post Listing Now</button>
+  </div>
+
+  <!-- VERIFICATION REQUEST -->
+  <div class="verify-card">
+    <div class="verify-header">
+      <div class="verify-icon">✅</div>
+      <div>
+        <div class="verify-title">Get Verified Seller Badge</div>
+        <div class="verify-sub">Build trust with buyers — verified sellers sell 3x more!</div>
+      </div>
+    </div>
+    <div class="verify-steps">
+      <div class="verify-step"><div class="step-num">1</div><div class="step-text">Upload your National ID or Passport</div></div>
+      <div class="verify-step"><div class="step-num">2</div><div class="step-text">Provide your business or personal address</div></div>
+      <div class="verify-step"><div class="step-num">3</div><div class="step-text">Submit phone number linked to your MoMo/Airtel Money</div></div>
+      <div class="verify-step"><div class="step-num">4</div><div class="step-text">We review within 24 hours and notify you</div></div>
+    </div>
+    <button class="verify-btn" onclick="submitVerification()">📋 Send Verification Request</button>
+  </div>
+</div>
+
+<!-- ==================== GROUPS PAGE ==================== -->
+<div id="groups" class="page page-scroll">
+  <div class="group-hero">
+    <h2>💬 Market Groups</h2>
+    <p>Join buying and selling communities. Chat with sellers, ask questions, and get the best deals!</p>
+    <button class="btn-primary" onclick="showModal('createGroupModal')">+ Create Group</button>
+  </div>
+
+  <div class="section-header">
+    <div class="section-title">🔥 Active Groups</div>
+  </div>
+
+  <div class="group-list">
+    <div class="group-card" onclick="showModal('groupChatModal')">
+      <div class="group-avatar" style="background:#fff3eb">🛍️</div>
+      <div class="group-info">
+        <div class="group-name">Lusaka Marketplace 🏙️</div>
+        <div class="group-meta">🟢 4,821 members • 23 online now</div>
+      </div>
+      <button class="group-joined" onclick="event.stopPropagation()">Joined ✓</button>
+    </div>
+    <div class="group-card" onclick="showModal('groupChatModal')">
+      <div class="group-avatar" style="background:#e8f5e9">🌿</div>
+      <div class="group-info">
+        <div class="group-name">Zambia Farm & Food 🌽</div>
+        <div class="group-meta">🟢 2,103 members • 8 online now</div>
+      </div>
+      <button class="group-join" onclick="event.stopPropagation();joinGroup(this)">Join</button>
+    </div>
+    <div class="group-card" onclick="showModal('groupChatModal')">
+      <div class="group-avatar" style="background:#e3f2fd">📱</div>
+      <div class="group-info">
+        <div class="group-name">Tech & Electronics ZM 💻</div>
+        <div class="group-meta">🟢 3,450 members • 41 online now</div>
+      </div>
+      <button class="group-join" onclick="event.stopPropagation();joinGroup(this)">Join</button>
+    </div>
+    <div class="group-card" onclick="showModal('groupChatModal')">
+      <div class="group-avatar" style="background:#f3e5f5">👗</div>
+      <div class="group-info">
+        <div class="group-name">Zambia Fashion Hub 👑</div>
+        <div class="group-meta">🟢 5,200 members • 67 online now</div>
+      </div>
+      <button class="group-join" onclick="event.stopPropagation();joinGroup(this)">Join</button>
+    </div>
+    <div class="group-card" onclick="showModal('groupChatModal')">
+      <div class="group-avatar" style="background:#fff8e1">🚗</div>
+      <div class="group-info">
+        <div class="group-name">Copperbelt Deals 🔧</div>
+        <div class="group-meta">🟢 1,879 members • 12 online now</div>
+      </div>
+      <button class="group-join" onclick="event.stopPropagation();joinGroup(this)">Join</button>
+    </div>
+    <div class="group-card" onclick="showModal('groupChatModal')">
+      <div class="group-avatar" style="background:#fce4ec">🏠</div>
+      <div class="group-info">
+        <div class="group-name">Home & Furniture ZM 🛋️</div>
+        <div class="group-meta">🟢 987 members • 5 online now</div>
+      </div>
+      <button class="group-join" onclick="event.stopPropagation();joinGroup(this)">Join</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SELLERS PAGE ==================== -->
+<div id="sellers" class="page page-scroll">
+  <div style="padding: 12px 12px 0;">
+    <div style="background: linear-gradient(135deg,#ff6600,#ff8c00); border-radius: var(--radius); padding: 20px; margin-bottom: 12px;">
+      <div style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:900;color:white;margin-bottom:6px;">🏪 Top Sellers</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.8);">Follow sellers and get notified of new products</div>
+    </div>
+  </div>
+
+  <div class="seller-list">
+    <div class="seller-card" onclick="showPage('sellerProfile')">
+      <div class="seller-top">
+        <div class="seller-avatar">👩‍💼</div>
+        <div style="flex:1">
+          <div class="seller-name">Chola's Fashion House</div>
+          <div class="seller-handle">@chola_fashion</div>
+          <div class="seller-verified">✅ Verified Seller</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:11px;color:var(--soft);font-weight:600">⭐ 4.9</div>
+          <div style="font-size:11px;color:var(--soft);font-weight:600">Lusaka</div>
+        </div>
+      </div>
+      <div class="seller-stats-row">
+        <div class="sel-stat"><div class="sel-stat-num">128</div><div class="sel-stat-label">Products</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">2.1K</div><div class="sel-stat-label">Followers</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">947</div><div class="sel-stat-label">Sales</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">4.9⭐</div><div class="sel-stat-label">Rating</div></div>
+      </div>
+      <button class="follow-seller-btn" onclick="event.stopPropagation();followSeller(this)">+ Follow Seller</button>
+    </div>
+    <div class="seller-card" onclick="showPage('sellerProfile')">
+      <div class="seller-top">
+        <div class="seller-avatar">👨‍💻</div>
+        <div style="flex:1">
+          <div class="seller-name">TechZam Electronics</div>
+          <div class="seller-handle">@techzam_official</div>
+          <div class="seller-verified">✅ Verified Seller</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:11px;color:var(--soft);font-weight:600">⭐ 4.7</div>
+          <div style="font-size:11px;color:var(--soft);font-weight:600">Kitwe</div>
+        </div>
+      </div>
+      <div class="seller-stats-row">
+        <div class="sel-stat"><div class="sel-stat-num">89</div><div class="sel-stat-label">Products</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">1.4K</div><div class="sel-stat-label">Followers</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">623</div><div class="sel-stat-label">Sales</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">4.7⭐</div><div class="sel-stat-label">Rating</div></div>
+      </div>
+      <button class="follow-seller-btn" onclick="event.stopPropagation();followSeller(this)">+ Follow Seller</button>
+    </div>
+    <div class="seller-card" onclick="showPage('sellerProfile')">
+      <div class="seller-top">
+        <div class="seller-avatar">🌽</div>
+        <div style="flex:1">
+          <div class="seller-name">ZamFarms Fresh</div>
+          <div class="seller-handle">@zamfarms</div>
+          <div class="seller-verified">✅ Verified Seller</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:11px;color:var(--soft);font-weight:600">⭐ 4.8</div>
+          <div style="font-size:11px;color:var(--soft);font-weight:600">Chipata</div>
+        </div>
+      </div>
+      <div class="seller-stats-row">
+        <div class="sel-stat"><div class="sel-stat-num">56</div><div class="sel-stat-label">Products</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">876</div><div class="sel-stat-label">Followers</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">1.2K</div><div class="sel-stat-label">Sales</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">4.8⭐</div><div class="sel-stat-label">Rating</div></div>
+      </div>
+      <button class="follow-seller-btn" onclick="event.stopPropagation();followSeller(this)">+ Follow Seller</button>
+    </div>
+    <!-- Unverified pending seller -->
+    <div class="seller-card">
+      <div class="seller-top">
+        <div class="seller-avatar">🧴</div>
+        <div style="flex:1">
+          <div class="seller-name">Mwale Beauty Store</div>
+          <div class="seller-handle">@mwale_beauty</div>
+          <div style="font-size:10px;background:#f59e0b;color:white;padding:2px 7px;border-radius:10px;font-weight:700;display:inline-block;margin-top:3px">⏳ Pending Verification</div>
+        </div>
+      </div>
+      <div class="seller-stats-row">
+        <div class="sel-stat"><div class="sel-stat-num">14</div><div class="sel-stat-label">Products</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">45</div><div class="sel-stat-label">Followers</div></div>
+        <div class="sel-stat"><div class="sel-stat-num">8</div><div class="sel-stat-label">Sales</div></div>
+      </div>
+      <button class="follow-seller-btn" onclick="followSeller(this)">+ Follow Seller</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAYMENT PAGE ==================== -->
+<div id="payment" class="page page-scroll">
+  <div class="payment-section">
+    <div class="payment-title">💳 Payment Methods in Zambia</div>
+    <p style="font-size:12px;color:var(--soft);margin-bottom:16px;font-weight:600">All major Zambian payment methods accepted. Select your preferred method:</p>
+
+    <div style="font-size:13px;font-weight:800;color:var(--dark);margin-bottom:10px">📱 Mobile Money</div>
+    <div class="payment-grid">
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🟢</div>
+        <div class="payment-name">MTN Mobile Money</div>
+        <div class="payment-sub">*182# • Instant</div>
+        <div class="payment-badge">POPULAR</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🔴</div>
+        <div class="payment-name">Airtel Money</div>
+        <div class="payment-sub">*778# • Instant</div>
+        <div class="payment-badge">POPULAR</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🔵</div>
+        <div class="payment-name">Zamtel Money (Kwacha)</div>
+        <div class="payment-sub">*422# • Instant</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">💜</div>
+        <div class="payment-name">SpeedPay Zambia</div>
+        <div class="payment-sub">Via app • Instant</div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;font-weight:800;color:var(--dark);margin-bottom:10px">🏦 Bank Transfers</div>
+    <div class="payment-grid">
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🏛️</div>
+        <div class="payment-name">Zanaco Bank</div>
+        <div class="payment-sub">EFT / Online Banking</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🏦</div>
+        <div class="payment-name">FNB Zambia</div>
+        <div class="payment-sub">Internet Banking</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🏧</div>
+        <div class="payment-name">Stanbic Bank</div>
+        <div class="payment-sub">Online / Branch</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🏩</div>
+        <div class="payment-name">Indo-Zambia Bank</div>
+        <div class="payment-sub">Transfer / Cash</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🌐</div>
+        <div class="payment-name">Atlas Mara Bank</div>
+        <div class="payment-sub">EFT Transfer</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🏦</div>
+        <div class="payment-name">Absa Zambia</div>
+        <div class="payment-sub">Digital Banking</div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;font-weight:800;color:var(--dark);margin-bottom:10px">💰 Other Methods</div>
+    <div class="payment-grid">
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">💵</div>
+        <div class="payment-name">Cash on Delivery</div>
+        <div class="payment-sub">Pay when received</div>
+        <div class="payment-badge" style="background:var(--orange)">SAFE</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🌍</div>
+        <div class="payment-name">World Remit</div>
+        <div class="payment-sub">International transfers</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">💳</div>
+        <div class="payment-name">Visa / Mastercard</div>
+        <div class="payment-sub">Credit & Debit cards</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">📲</div>
+        <div class="payment-name">Zoona</div>
+        <div class="payment-sub">Agent banking</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🔐</div>
+        <div class="payment-name">Kazang</div>
+        <div class="payment-sub">Retail payment</div>
+      </div>
+      <div class="payment-card" onclick="selectPayment(this)">
+        <div class="payment-icon">🤝</div>
+        <div class="payment-name">Escrow (Safe Pay)</div>
+        <div class="payment-sub">Held until delivery</div>
+        <div class="payment-badge" style="background:#6a1b9a">NEW</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PROFILE PAGE ==================== -->
+<div id="profile" class="page page-scroll">
+  <div class="profile-cover">
+    <div class="verified-badge">✅ Verified Seller</div>
+  </div>
+  <div class="profile-info-card">
+    <div class="profile-avatar-wrap">
+      <div class="profile-avatar">😊</div>
+      <div class="profile-actions">
+        <button class="message-btn" onclick="showModal('editProfileModal')">✏️ Edit</button>
+        <button class="follow-btn" onclick="showModal('groupChatModal')">💬 Chat</button>
+      </div>
+    </div>
+    <div class="profile-name">Mutale Zulu</div>
+    <div class="profile-handle">@mutale_sells • Lusaka, Zambia</div>
+    <div class="profile-bio">Selling quality goods across Zambia 🇿🇲 | Fast delivery | Trusted seller since 2022</div>
+    <div class="profile-stats">
+      <div class="prof-stat"><div class="prof-stat-num">47</div><div class="prof-stat-label">Listings</div></div>
+      <div class="prof-stat"><div class="prof-stat-num">1.2K</div><div class="prof-stat-label">Followers</div></div>
+      <div class="prof-stat"><div class="prof-stat-num">312</div><div class="prof-stat-label">Sales</div></div>
+      <div class="prof-stat"><div class="prof-stat-num">4.8⭐</div><div class="prof-stat-label">Rating</div></div>
+    </div>
+  </div>
+
+  <div class="section-header"><div class="section-title">⚙️ Profile Settings</div></div>
+  <div class="settings-section">
+    <div class="settings-card">
+      <div class="settings-item" onclick="showModal('editProfileModal')">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#fff3eb">👤</div>
+          <div><div class="settings-label">Edit Profile</div><div class="settings-sub">Name, bio, photo, location</div></div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+      <div class="settings-item" onclick="showModal('editProfileModal')">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#e3f2fd">🏪</div>
+          <div><div class="settings-label">Shop Settings</div><div class="settings-sub">Customize your seller profile</div></div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+      <div class="settings-item" onclick="showPage('payment')">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#e8f5e9">💳</div>
+          <div><div class="settings-label">Payment Methods</div><div class="settings-sub">Manage how you receive money</div></div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#fce4ec">🔔</div>
+          <div><div class="settings-label">Push Notifications</div><div class="settings-sub">New orders, messages, deals</div></div>
+        </div>
+        <div class="toggle on" onclick="toggleSwitch(this)"><div class="toggle-dot"></div></div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#f3e5f5">📍</div>
+          <div><div class="settings-label">Location Services</div><div class="settings-sub">For nearby deals & delivery</div></div>
+        </div>
+        <div class="toggle on" onclick="toggleSwitch(this)"><div class="toggle-dot"></div></div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#e8f5e9">🌙</div>
+          <div><div class="settings-label">Dark Mode</div><div class="settings-sub">Coming soon</div></div>
+        </div>
+        <div class="toggle" onclick="showToast('Dark mode coming soon!','')"><div class="toggle-dot"></div></div>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-item" onclick="showModal('adminModal')">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#fff8e1">👑</div>
+          <div><div class="settings-label">Admin Panel</div><div class="settings-sub">Review seller verification requests</div></div>
+        </div>
+        <div style="background:var(--red);color:white;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px">3 NEW</div>
+      </div>
+      <div class="settings-item" onclick="showPage('sell')">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#e3f2fd">📋</div>
+          <div><div class="settings-label">My Listings</div><div class="settings-sub">Manage your posted items</div></div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#fce4ec">📊</div>
+          <div><div class="settings-label">Sales Analytics</div><div class="settings-sub">Track earnings & performance</div></div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#f3e5f5">🔒</div>
+          <div><div class="settings-label">Privacy & Security</div><div class="settings-sub">Password, 2FA, data</div></div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#e8f5e9">❓</div>
+          <div><div class="settings-label">Help & Support</div><div class="settings-sub">FAQs, contact us</div></div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+      <div class="settings-item" onclick="showToast('Logged out!','')">
+        <div class="settings-item-left">
+          <div class="settings-icon" style="background:#fce4ec">🚪</div>
+          <div><div class="settings-label" style="color:var(--red)">Log Out</div><div class="settings-sub">Sign out of your account</div></div>
+        </div>
+        <div class="settings-arrow">›</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SELLER PROFILE PAGE ==================== -->
+<div id="sellerProfile" class="page page-scroll">
+  <div style="padding:12px 12px 0; display:flex; align-items:center; gap:10px;">
+    <button onclick="showPage('sellers')" style="background:var(--light);border:1.5px solid var(--border);border-radius:10px;padding:8px 14px;font-weight:800;font-size:13px;cursor:pointer;">← Back</button>
+  </div>
+  <div class="profile-cover" style="margin-top:8px;">
+    <div class="verified-badge">✅ Verified</div>
+  </div>
+  <div class="profile-info-card">
+    <div class="profile-avatar-wrap">
+      <div class="profile-avatar">👩‍💼</div>
+      <div class="profile-actions">
+        <button class="follow-btn" onclick="followSeller(this)">+ Follow</button>
+        <button class="message-btn" onclick="showModal('groupChatModal')">💬 Chat</button>
+      </div>
+    </div>
+    <div class="profile-name">Chola's Fashion House</div>
+    <div class="profile-handle">@chola_fashion • Lusaka</div>
+    <div class="profile-bio">Quality fashion for every Zambian! New arrivals weekly. DM to order. Fast delivery 🛵</div>
+    <div class="profile-stats">
+      <div class="prof-stat"><div class="prof-stat-num">128</div><div class="prof-stat-label">Products</div></div>
+      <div class="prof-stat"><div class="prof-stat-num">2.1K</div><div class="prof-stat-label">Followers</div></div>
+      <div class="prof-stat"><div class="prof-stat-num">947</div><div class="prof-stat-label">Sales</div></div>
+      <div class="prof-stat"><div class="prof-stat-num">4.9⭐</div><div class="prof-stat-label">Rating</div></div>
+    </div>
+  </div>
+  <div class="section-header"><div class="section-title">🛍️ Their Products</div></div>
+  <div class="product-grid">
+    <div class="product-card"><div class="product-img">👗<div class="prod-badge hot">HOT</div></div><div class="product-info"><div class="product-name">Ankara Wrap Dress XL</div><div class="price-row"><span class="price">K350</span></div><button class="buy-btn" onclick="showToast('Added to cart! 🛒','success')">Add to Cart</button></div></div>
+    <div class="product-card"><div class="product-img">👠</div><div class="product-info"><div class="product-name">Ladies Heels Size 6-9</div><div class="price-row"><span class="price">K220</span><span class="old-price">K300</span></div><button class="buy-btn" onclick="showToast('Added to cart! 🛒','success')">Add to Cart</button></div></div>
+  </div>
+</div>
+
+<!-- ==================== BOTTOM NAV ==================== -->
+<div class="bottom-nav">
+  <div class="nav-item active" onclick="showPage('home',null,this)">
+    <span class="nav-icon">🏠</span>
+    <span class="nav-label">Home</span>
+  </div>
+  <div class="nav-item" onclick="showPage('groups',null,this)">
+    <span class="nav-icon">💬</span>
+    <span class="nav-label">Groups</span>
+  </div>
+  <div class="nav-item sell-nav" onclick="showPage('sell',null,this)">
+    <div class="sell-icon">➕</div>
+    <span class="nav-label">Sell</span>
+  </div>
+  <div class="nav-item" onclick="showPage('sellers',null,this)">
+    <span class="nav-icon">🏪</span>
+    <span class="nav-label">Sellers</span>
+  </div>
+  <div class="nav-item" onclick="showPage('profile',null,this)">
+    <span class="nav-icon">👤</span>
+    <span class="nav-label">Profile</span>
+  </div>
+</div>
+
+<!-- ==================== MODALS ==================== -->
+
+<!-- GROUP CHAT MODAL -->
+<div class="modal-overlay" id="groupChatModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">💬 Lusaka Marketplace</div>
+        <div style="font-size:11px;color:var(--soft)">4,821 members • 23 online</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('groupChatModal')">✕</button>
+    </div>
+    <div class="chat-area" style="margin:12px;border-radius:var(--radius);">
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg other">
+          <div class="msg-bubble">Anyone selling maize meal 25kg bags? Need 10 bags 🌽</div>
+          <div class="msg-meta">Temwani • 2m ago</div>
+        </div>
+        <div class="chat-msg other">
+          <div class="msg-bubble">I have Samsung phones, new stock just arrived! 📱 DM me</div>
+          <div class="msg-meta">TechZam • 5m ago</div>
+        </div>
+        <div class="chat-msg me">
+          <div class="msg-bubble">What's the price on the Samsung A54?</div>
+          <div class="msg-meta">You • just now</div>
+        </div>
+        <div class="chat-msg other">
+          <div class="msg-bubble">K4,500 brand new sealed box, comes with warranty 🔥</div>
+          <div class="msg-meta">TechZam • just now</div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatMsg" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMsg()" />
+        <button class="chat-send" onclick="sendMsg()">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">Product Details</div>
+      <button class="modal-close" onclick="closeModal('productModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--light);border-radius:var(--radius);height:200px;display:flex;align-items:center;justify-content:center;font-size:80px;margin-bottom:16px;">👟</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:800;margin-bottom:6px;">Nike Air Force Shoes</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><span style="font-size:24px;font-weight:900;color:var(--red);font-family:'Poppins',sans-serif;">K480</span><span style="text-decoration:line-through;color:var(--soft);">K800</span><span style="background:var(--orange-light);color:var(--orange);font-weight:800;font-size:12px;padding:2px 8px;border-radius:6px;">-40%</span></div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:16px;">Brand new Nike Air Force 1 in original box. Available in sizes 40-46. Quality guaranteed. Delivery available in Lusaka same day!</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:10px;background:var(--light);border-radius:var(--radius-sm);">
+        <div style="font-size:22px;">👩‍💼</div>
+        <div><div style="font-weight:800;font-size:13px;">Chola's Fashion House</div><div style="font-size:11px;color:var(--soft);">✅ Verified Seller • ⭐ 4.9</div></div>
+        <button onclick="showPage('sellerProfile');closeModal('productModal')" style="margin-left:auto;background:var(--light);border:1.5px solid var(--border);border-radius:20px;padding:6px 12px;font-weight:700;font-size:11px;cursor:pointer;">View Shop</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <button onclick="showToast('Added to cart! 🛒','success');closeModal('productModal')" style="background:var(--light);border:2px solid var(--orange);color:var(--orange);padding:13px;border-radius:12px;font-weight:800;font-size:13px;cursor:pointer;">🛒 Add to Cart</button>
+        <button onclick="showModal('paymentModal');closeModal('productModal')" style="background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:white;border:none;padding:13px;border-radius:12px;font-weight:800;font-size:13px;cursor:pointer;">⚡ Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">💳 Choose Payment</div>
+      <button class="modal-close" onclick="closeModal('paymentModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--light);border-radius:var(--radius-sm);padding:12px;margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;"><span style="font-weight:600;color:var(--soft)">Order Total</span><span style="font-weight:800;color:var(--dark)">K480</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;"><span style="font-weight:600;color:var(--soft)">Delivery</span><span style="font-weight:800;color:var(--green)">FREE</span></div>
+      </div>
+      <div class="payment-grid" style="margin-bottom:16px;">
+        <div class="payment-card" onclick="selectPayment(this)"><div class="payment-icon">🟢</div><div class="payment-name">MTN MoMo</div><div class="payment-sub">*182#</div></div>
+        <div class="payment-card" onclick="selectPayment(this)"><div class="payment-icon">🔴</div><div class="payment-name">Airtel Money</div><div class="payment-sub">*778#</div></div>
+        <div class="payment-card" onclick="selectPayment(this)"><div class="payment-icon">💵</div><div class="payment-name">Cash on Delivery</div><div class="payment-sub">Pay at door</div></div>
+        <div class="payment-card" onclick="selectPayment(this)"><div class="payment-icon">💳</div><div class="payment-name">Card</div><div class="payment-sub">Visa/Mastercard</div></div>
+      </div>
+      <button onclick="completePurchase()" style="width:100%;background:linear-gradient(135deg,var(--green),#00c853);color:white;border:none;padding:14px;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer;font-family:'Poppins',sans-serif;">✅ Complete Purchase</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART MODAL -->
+<div class="modal-overlay" id="cartModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">🛒 My Cart (3 items)</div>
+      <button class="modal-close" onclick="closeModal('cartModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);">
+        <div style="font-size:30px;">👟</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:13px;">Nike Air Force</div><div style="font-size:12px;color:var(--soft)">Qty: 1</div></div>
+        <div style="font-weight:800;color:var(--red);">K480</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);">
+        <div style="font-size:30px;">🍳</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:13px;">Non-Stick Pan Set</div><div style="font-size:12px;color:var(--soft)">Qty: 1</div></div>
+        <div style="font-weight:800;color:var(--red);">K320</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);">
+        <div style="font-size:30px;">👜</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:13px;">Ladies Handbag</div><div style="font-size:12px;color:var(--soft)">Qty: 1</div></div>
+        <div style="font-weight:800;color:var(--red);">K750</div>
+      </div>
+      <div style="padding:14px 0;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <div style="font-weight:700;color:var(--soft);">Total</div>
+        <div style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:900;color:var(--dark);">K1,550</div>
+      </div>
+      <button onclick="showModal('paymentModal');closeModal('cartModal')" style="width:100%;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:white;border:none;padding:14px;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer;font-family:'Poppins',sans-serif;">⚡ Checkout Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT PROFILE MODAL -->
+<div class="modal-overlay" id="editProfileModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">✏️ Edit Profile</div>
+      <button class="modal-close" onclick="closeModal('editProfileModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Full Name</label><input type="text" value="Mutale Zulu" /></div>
+      <div class="form-group"><label>Username</label><input type="text" value="@mutale_sells" /></div>
+      <div class="form-group"><label>Bio</label><textarea>Selling quality goods across Zambia 🇿🇲 | Fast delivery</textarea></div>
+      <div class="form-group"><label>Location</label><select><option>Lusaka</option><option>Kitwe</option><option>Ndola</option></select></div>
+      <div class="form-group"><label>Phone (for MoMo)</label><input type="tel" placeholder="+260 9X XXX XXXX" /></div>
+      <button onclick="showToast('Profile saved! ✅','success');closeModal('editProfileModal')" style="width:100%;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:white;border:none;padding:13px;border-radius:12px;font-weight:900;font-size:14px;cursor:pointer;">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN MODAL -->
+<div class="modal-overlay" id="adminModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">👑 Admin: Verify Sellers</div>
+      <button class="modal-close" onclick="closeModal('adminModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="font-size:13px;color:var(--soft);margin-bottom:14px;font-weight:600;">Review and approve seller verification requests</div>
+      <div class="pending-card">
+        <div class="pending-user">
+          <div class="pending-avatar">🧴</div>
+          <div><div class="pending-name">Mwale Beauty Store</div><div class="pending-info">Submitted NRC ✓ • Phone verified ✓ • Lusaka</div></div>
+        </div>
+        <div class="pending-actions">
+          <button class="approve-btn" onclick="approveSeller(this)">✅ Approve</button>
+          <button class="reject-btn" onclick="rejectSeller(this)">❌ Reject</button>
+        </div>
+      </div>
+      <div class="pending-card">
+        <div class="pending-user">
+          <div class="pending-avatar">🌾</div>
+          <div><div class="pending-name">Banda Agro Supplies</div><div class="pending-info">Submitted NRC ✓ • Phone verified ✓ • Chipata</div></div>
+        </div>
+        <div class="pending-actions">
+          <button class="approve-btn" onclick="approveSeller(this)">✅ Approve</button>
+          <button class="reject-btn" onclick="rejectSeller(this)">❌ Reject</button>
+        </div>
+      </div>
+      <div class="pending-card">
+        <div class="pending-user">
+          <div class="pending-avatar">🚗</div>
+          <div><div class="pending-name">Copperbelt Auto Parts</div><div class="pending-info">Submitted NRC ✓ • Ndola</div></div>
+        </div>
+        <div class="pending-actions">
+          <button class="approve-btn" onclick="approveSeller(this)">✅ Approve</button>
+          <button class="reject-btn" onclick="rejectSeller(this)">❌ Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CREATE GROUP MODAL -->
+<div class="modal-overlay" id="createGroupModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">➕ Create Group</div>
+      <button class="modal-close" onclick="closeModal('createGroupModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Group Name</label><input type="text" placeholder="e.g. Ndola Sellers Network" /></div>
+      <div class="form-group"><label>Category</label><select><option>General Market</option><option>Electronics</option><option>Fashion</option><option>Food & Farming</option><option>Vehicles</option><option>Services</option></select></div>
+      <div class="form-group"><label>Description</label><textarea placeholder="What is this group about?"></textarea></div>
+      <button onclick="showToast('Group created! 🎉','success');closeModal('createGroupModal')" style="width:100%;background:linear-gradient(135deg,#6a1b9a,#8e24aa);color:white;border:none;padding:13px;border-radius:12px;font-weight:900;font-size:14px;cursor:pointer;">Create Group</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// PAGE NAVIGATION
+function showPage(pageId, tabEl, navEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  // Update nav tabs
+  if (tabEl) {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
+  }
+  // Update bottom nav
+  if (navEl) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    navEl.classList.add('active');
+  }
+  window.scrollTo(0, 0);
+}
+
+// MODALS
+function showModal(id) {
+  document.getElementById(id).classList.add('active');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+}
+// Close modal on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+});
+
+// TOAST
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => { t.className = 'toast'; }, 2800);
+}
+
+// COUNTDOWN TIMER
+let totalSecs = 4 * 3600 + 32 * 60 + 17;
+function updateCountdown() {
+  const h = Math.floor(totalSecs / 3600);
+  const m = Math.floor((totalSecs % 3600) / 60);
+  const s = totalSecs % 60;
+  document.getElementById('hrs').textContent = String(h).padStart(2, '0');
+  document.getElementById('mins').textContent = String(m).padStart(2, '0');
+  document.getElementById('secs').textContent = String(s).padStart(2, '0');
+  if (totalSecs > 0) totalSecs--;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// COMMISSION CALC
+function calcCommission() {
+  const price = parseFloat(document.getElementById('prodPrice').value) || 0;
+  const calc = document.getElementById('priceCalc');
+  if (price > 0) {
+    calc.style.display = 'block';
+    let rate = price >= 1000 ? 0.05 : price >= 500 ? 0.07 : price >= 100 ? 0.08 : 0.10;
+    const comm = price * rate;
+    const earn = price - comm;
+    document.getElementById('calcPrice').textContent = 'K' + price.toFixed(2);
+    document.getElementById('calcComm').textContent = '-K' + comm.toFixed(2) + ' (' + (rate*100) + '%)';
+    document.getElementById('calcEarn').textContent = 'K' + earn.toFixed(2);
+  } else {
+    calc.style.display = 'none';
+  }
+}
+
+// SUBMIT LISTING
+function submitListing() {
+  const name = document.getElementById('prodName').value;
+  const price = document.getElementById('prodPrice').value;
+  if (!name || !price) { showToast('Please fill in product name and price!', 'error'); return; }
+  showToast('Listing posted successfully! 🚀', 'success');
+  document.getElementById('prodName').value = '';
+  document.getElementById('prodPrice').value = '';
+  document.getElementById('prodDesc').value = '';
+  document.getElementById('priceCalc').style.display = 'none';
+}
+
+// SUBMIT VERIFICATION
+function submitVerification() {
+  showToast('Verification request sent! ✅ We\'ll review in 24hrs', 'success');
+}
+
+// CHAT
+function sendMsg() {
+  const input = document.getElementById('chatMsg');
+  const msg = input.value.trim();
+  if (!msg) return;
+  const chat = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'chat-msg me';
+  div.innerHTML = `<div class="msg-bubble">${msg}</div><div class="msg-meta">You • just now</div>`;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+  input.value = '';
+}
+
+// WISHLIST
+function addWishlist(btn) {
+  btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+  showToast(btn.textContent === '❤️' ? 'Added to wishlist! ❤️' : 'Removed from wishlist', '');
+}
+
+// FOLLOW SELLER
+function followSeller(btn) {
+  if (btn.textContent.includes('Follow')) {
+    btn.textContent = '✓ Following';
+    btn.style.background = 'var(--light)';
+    btn.style.color = 'var(--soft)';
+    btn.style.border = '1.5px solid var(--border)';
+    showToast('Following! You\'ll get new product alerts 🔔', 'success');
+  } else {
+    btn.textContent = '+ Follow Seller';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.style.border = '';
+  }
+}
+
+// JOIN GROUP
+function joinGroup(btn) {
+  btn.textContent = 'Joined ✓';
+  btn.className = 'group-joined';
+  showToast('Joined group! 🎉', 'success');
+}
+
+// SELECT PAYMENT
+function selectPayment(card) {
+  card.closest('.payment-grid, .modal-body').querySelectorAll('.payment-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+}
+
+// COMPLETE PURCHASE
+function completePurchase() {
+  closeModal('paymentModal');
+  showToast('Order placed! 🎉 You\'ll receive confirmation shortly', 'success');
+}
+
+// APPROVE / REJECT SELLER
+function approveSeller(btn) {
+  const card = btn.closest('.pending-card');
+  const name = card.querySelector('.pending-name').textContent;
+  card.style.opacity = '0.5';
+  card.querySelector('.pending-actions').innerHTML = '<div style="color:var(--green);font-weight:800;font-size:13px;">✅ Approved!</div>';
+  showToast(name + ' approved! ✅', 'success');
+}
+function rejectSeller(btn) {
+  const card = btn.closest('.pending-card');
+  card.style.opacity = '0.5';
+  card.querySelector('.pending-actions').innerHTML = '<div style="color:var(--red);font-weight:800;font-size:13px;">❌ Rejected</div>';
+  showToast('Seller rejected', 'error');
+}
+
+// TOGGLE
+function toggleSwitch(el) {
+  el.classList.toggle('on');
+}
+
+// SEARCH
+function doSearch() {
+  const q = document.getElementById('searchInput').value;
+  if (q) showToast('Searching for: ' + q + '...', '');
+}
+document.getElementById('searchInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') doSearch();
+});
+</script>
+</body>
+</html>
